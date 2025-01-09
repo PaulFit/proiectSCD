@@ -21,5 +21,10 @@ public class PackageService {
     public List<Package> getUnallocatedPackages() {
         return packageRepository.findUnallocatedPackages();
     }
+    public Package getPackageById(Long id) {
+        return packageRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Package not found"));
+    }
+
 
 }

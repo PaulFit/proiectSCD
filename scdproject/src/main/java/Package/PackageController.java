@@ -35,6 +35,12 @@ public class PackageController {
         return packageService.getUnallocatedPackages();
     }
 
+    @PutMapping("/{id}/deliver")
+    public Package markAsDelivered(@PathVariable Long id) {
+        Package pkg = packageService.getPackageById(id);
+        pkg.setStatus(Package.Status.DELIVERED);
+        return packageService.savePackage(pkg);
+    }
 
 
 }
